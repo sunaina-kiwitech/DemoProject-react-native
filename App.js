@@ -2,27 +2,27 @@ import React from 'react';
 import {
   StyleSheet,
   View,
+  StatusBar,
 } from 'react-native';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import Loginpage from './component/LoginPage';
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
-    <>
+    <NavigationContainer>
       <View style={styles.container}>
-        <Loginpage />
+       <Loginpage/>
       </View>
-    </>
+    </NavigationContainer>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.lighter,
+    backgroundColor:'white',
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -1,16 +1,35 @@
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
 
 export default function Loginpage() {
+    const [userName, checkUserName] = useState('');
+    const [password, checkPassword] = useState('');
+
+    const onChangeUserName = (text) => {
+        checkUserName(text)
+    }
+
+    const onChangePassword = (text) => {
+        checkPassword(text)
+    }
+
+    const onsubmit = (userName, password) => {
+        if (userName === 'sunaina.passi@kiwitech.com' && password === 'Kiwi@123') {
+            console.log("loggedIn");
+        }
+        else {
+            alert('Invalid credentials')
+        }
+    }
     return (
         <View style={styles.container}>
             <Image source={require('./../assests/images/music.png')}
                 style={{ width: 360, height: 200 }}
             />
             <Text style={{
-                color: 'orange',
+                color: 'steelblue',
                 fontSize: 17,
-                fontWeight: 'bold'
+                fontWeight: 'bold',
             }}>
                 Login before you enjoy the world's music catlog
             </Text>
@@ -21,6 +40,8 @@ export default function Loginpage() {
                 <TextInput
                     isDarkMode
                     autoCapitalize="words"
+                    value={userName}
+                    onChangeText={text => onChangeUserName(text)}
                 />
             </View>
             <View style={styles.box}>
@@ -29,16 +50,21 @@ export default function Loginpage() {
                 </Text>
                 <TextInput
                     isDarkMode
-                    autoCapitalize="words"
-                />
+                    value={password}
+                    onChangeText={text => onChangePassword(text)}
+                    secureTextEntry={true} />
             </View>
             <View style={styles.button}>
-                <Text>
-                    Login
-        </Text>
+                <Button
+                    title="Login"
+                    color='steelblue'
+                    onPress={() => onsubmit(userName, password)}
+                    disabled={userName === '' || password === ''}
+                />
             </View>
             <Text style={{
-                textDecorationLine: 'underline'
+                textDecorationLine: 'underline',
+                textAlign: 'center',
             }}>
                 Forgot Password
             </Text>
@@ -54,15 +80,13 @@ const styles = StyleSheet.create({
     },
     box: {
         borderBottomWidth: 1,
-        borderColor: 'red'
+        borderColor: 'steelblue'
     },
     button: {
-        borderWidth: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 100,
-        height: 40,
+        textAlign: 'center',
+        backgroundColor: 'steelblue',
+        marginVertical: 8,
         borderRadius: 30,
-        backgroundColor: 'orange'
+
     }
 });
