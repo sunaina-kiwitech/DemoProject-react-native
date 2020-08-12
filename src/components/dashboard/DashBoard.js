@@ -10,7 +10,7 @@ const DashBoard = () => {
     return (
         <View style={styles.container}>
             <View style={styles.listofsongs}>
-                <ListOfSongs />
+            <ListOfSongs/>
             </View>
         </View>
     );

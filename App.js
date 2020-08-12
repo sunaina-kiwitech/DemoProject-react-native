@@ -2,29 +2,25 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  StatusBar,
+  SafeAreaView
 } from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Loginpage from './component/LoginPage';
+import Main from './src/Main';
+import DashBoard from './src/components/dashboard/DashBoard';
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-       <Loginpage/>
+        <Main/>
       </View>
-    </NavigationContainer>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor:'white',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: 'flex', flex: 1
   },
 });
 

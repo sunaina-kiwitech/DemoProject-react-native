@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
 
-export default function Loginpage() {
+export default function Loginpage(props) {
     const [userName, checkUserName] = useState('');
     const [password, checkPassword] = useState('');
 
@@ -15,7 +15,7 @@ export default function Loginpage() {
 
     const onsubmit = (userName, password) => {
         if (userName === 'sunaina.passi@kiwitech.com' && password === 'Kiwi@123') {
-            console.log("loggedIn");
+        props.navigation.navigate('DashBoard')
         }
         else {
             alert('Invalid credentials')
@@ -23,7 +23,7 @@ export default function Loginpage() {
     }
     return (
         <View style={styles.container}>
-            <Image source={require('./../assests/images/music.png')}
+            <Image source={require('./../../../assests/images/music.png')}
                 style={{ width: 360, height: 200 }}
             />
             <Text style={{
@@ -77,6 +77,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-evenly',
+        backgroundColor:'white',
+    
     },
     box: {
         borderBottomWidth: 1,
@@ -87,6 +89,5 @@ const styles = StyleSheet.create({
         backgroundColor: 'steelblue',
         marginVertical: 8,
         borderRadius: 30,
-
     }
 });
