@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
     View,
     Text,
@@ -12,41 +12,53 @@ import songList from '../../dummyData/songsList.json';
 
 const ListOfSongs = () => {
     return (
-        <View >
-                <View >
-                    <Text style={styles.header} >
-                        Playlist
+        <Fragment>
+            <View style={{ flex: 0.2 }} >
+                <Text style={styles.header}>
+                    Playlist
                 </Text>
-                </View>
-            <ScrollView>
-                {
-                    songList.songList.map((song, index) => {
-                        return <View key={index} style={{
-                            flexflow: 'column wrap',
-                        }}>
-                            <Text style={styles.list}>
-                                <Image source={require('./../../../assests/images/images.png')} style={{ width: 20, height: 20 }}
-                                /> {song.name} -  {song.artist}
-                            </Text>
-                        </View>
-                    })
-                }
-            </ScrollView>
-        </View>
+                <Image source={require('./../../../assests/images/dashboardimage.png')} style={styles.headerImage}
+                />
+            </View>
+            <View style={{ flex: 0.8 }}>
+                <ScrollView>
+                    {
+                        songList.songList.map((song, index) => {
+                            return <View key={index} style={styles.songs}>
+                                <Text style={styles.list}>
+                                    {song.name} -  {song.artist}
+                                </Text>
+                            </View>
+                        })
+                    }
+                </ScrollView>
+            </View>
+        </Fragment>
     );
 };
 
 const styles = StyleSheet.create({
     list: {
-        color: 'grey',
+        color: 'brown',
         fontSize: 20,
         padding: 5,
     },
+    songs: {
+        borderWidth: 1,
+        marginBottom: 2,
+        marginTop: 2,
+        marginRight: 1,
+    },
     header: {
-        color: 'steelblue',
-        fontSize: 40,
+        color: 'black',
+        fontSize: 80,
         fontWeight: 'bold',
-        position:'absolute',
+        justifyContent: 'flex-start'
+
+    },
+    headerImage: {
+        resizeMode: 'contain', height: 140,
+        width: 660,
     }
 });
 

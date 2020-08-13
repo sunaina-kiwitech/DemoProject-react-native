@@ -9,9 +9,7 @@ import ListOfSongs from './ListOfSongs';
 const DashBoard = () => {
     return (
         <View style={styles.container}>
-            <View style={styles.listofsongs}>
-            <ListOfSongs/>
-            </View>
+            <ListOfSongs />
         </View>
     );
 };
@@ -19,11 +17,8 @@ const DashBoard = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: 400, height: 200,
+        backgroundColor: 'white'
     },
-    listofsongs: {
-        justifyContent: 'flex-end'
-    }
 });
 
 export default DashBoard;

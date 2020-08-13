@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
 
-export default function Loginpage(props) {
+export default function Loginpage({ navigation }) {
     const [userName, checkUserName] = useState('');
     const [password, checkPassword] = useState('');
 
@@ -15,7 +15,7 @@ export default function Loginpage(props) {
 
     const onsubmit = (userName, password) => {
         if (userName === 'sunaina.passi@kiwitech.com' && password === 'Kiwi@123') {
-        props.navigation.navigate('DashBoard')
+            navigation.navigate('DashBoard')
         }
         else {
             alert('Invalid credentials')
@@ -58,7 +58,7 @@ export default function Loginpage(props) {
                 <Button
                     title="Login"
                     color='steelblue'
-                    onPress={() => onsubmit(userName, password)}
+                    onPress={() => onsubmit(userName.toLowerCase(), password)}
                     disabled={userName === '' || password === ''}
                 />
             </View>
@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-evenly',
-        backgroundColor:'white',
-    
+        backgroundColor: 'white',
+
     },
     box: {
         borderBottomWidth: 1,

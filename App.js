@@ -2,19 +2,29 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  SafeAreaView
+  SafeAreaView,
+  Text,
+  Button
 } from 'react-native';
 
-import Main from './src/Main';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import DashBoard from './src/components/dashboard/DashBoard';
+import Loginpage from './src/components/authentication/LoginPage';
+
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <Main/>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{
+        headerShown: false
+      }}>
+        <Stack.Screen name="Login" component={Loginpage} />
+        <Stack.Screen name="DashBoard" component={DashBoard} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
