@@ -34,7 +34,9 @@ export default function Loginpage({ navigation }) {
                 Login before you enjoy the world's music catlog
             </Text>
             <View style={styles.box}>
-                <Text>
+                <Text style={{
+                    fontWeight: 'bold',
+                }}>
                     Email ID/Mobile Number
                 </Text>
                 <TextInput
@@ -45,7 +47,9 @@ export default function Loginpage({ navigation }) {
                 />
             </View>
             <View style={styles.box}>
-                <Text>
+                <Text style={{
+                    fontWeight: 'bold',
+                }}>
                     Enter your password
                 </Text>
                 <TextInput
@@ -78,7 +82,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         backgroundColor: 'white',
-
+        padding: 10,
     },
     box: {
         borderBottomWidth: 1,
