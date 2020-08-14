@@ -2,7 +2,8 @@
     "songList": [
         {
             "name": "Shape of you",
-            "artist": "ED Sheeran"
+            "artist": "ED Sheeran",
+            "url": "D:\Sunaina\git\react-native\DemoProject\assests\songs\taron.mp3"
         },
         {
             "name": "Closer",
