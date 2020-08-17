@@ -6,10 +6,10 @@ import {
 } from 'react-native';
 import ListOfSongs from './ListOfSongs';
 
-const DashBoard = () => {
+const DashBoard = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            <ListOfSongs />
+            <ListOfSongs navigation={navigation} />
         </View>
     );
 };

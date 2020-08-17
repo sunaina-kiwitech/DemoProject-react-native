@@ -43,16 +43,6 @@ const audioList = [
         url: require('../../../assests/songs/sjlt.mp3')
     },
     {
-        title: 'I Don’t Wanna Live Forever',
-        artist: 'Taylor Swift',
-        url: require('../../../assests/songs/idwlf.mp3')
-    },
-    {
-        title: 'Zindagi',
-        artist: 'Sharry Maan',
-        url: require('../../../assests/songs/zindagi.mp3')
-    },
-    {
         title: 'Bom Bidi Bom',
         artist: 'Nicki Minaj',
         url: require('../../../assests/songs/bombidibom.mp3')
@@ -76,6 +66,7 @@ const audioList = [
 
 var sound1;
 function playSound(item) {
+    stopSound();
     sound1 = new Sound(item.url, (error, sound) => {
         if (error) {
             alert('error' + error + message);
@@ -87,22 +78,43 @@ function playSound(item) {
     });
 }
 
-function stopSound(item, index) {
-    sound1.stop(() => {
-        console.log("sound bstop");
-    })
+function stopSound() {
+    if (sound1) {
+        sound1.stop(() => {
+            console.log("sound bstop");
+        })
+    }
 }
-const ListOfSongs = () => {
+
+const ListOfSongs = ({ navigation }) => {
+    const onLogout = () => {
+        navigation.navigate('Login')
+    }
+
     return (
         <Fragment>
             <View style={{ flex: 1 }} >
+                <TouchableOpacity onPress={() => {
+                    return onLogout()
+                }
+                }>
+                    <View style={styles.logout}>
+                        <Text style={{
+                            fontSize: 20,
+                            fontWeight: 'bold',
+                            color: 'darkred'
+                        }}>
+                            LOGOUT
+        </Text>
+                    </View>
+                </TouchableOpacity>
                 <Text style={styles.headerTitle}>
-                    PLAYLIST
+                    Most Overplayed Songs
 </Text>
                 <ScrollView>
                     {audioList.map((item, index) => {
                         return (<View style={styles.feature} key={item.title}>
-                            <Text style={{ flex: 1, fontSize: 14 }}>
+                            <Text style={{ flex: 1, fontSize: 16, fontWeight:'bold' }}>
                                 {item.title} - {item.artist}
                             </Text>
                             <TouchableOpacity onPress={() => {
@@ -113,7 +125,7 @@ const ListOfSongs = () => {
         </Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => {
-                                return stopSound(item, index)
+                                return stopSound()
                             }}>
                                 <Text style={styles.buttonStop}>
                                     Stop
@@ -134,8 +146,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         paddingVertical: 20,
         fontWeight: 'bold',
-        color: 'black',
-        backgroundColor: 'steelblue'
+        color: 'steelblue',
+        alignSelf: 'center'
     },
     buttonPlay: {
         fontSize: 16,
@@ -157,7 +169,9 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         alignItems: 'center',
         borderTopWidth: 1,
-        backgroundColor: 'lightgrey'
+    },
+    logout: {
+        alignItems: 'flex-end',
     }
 });
 
