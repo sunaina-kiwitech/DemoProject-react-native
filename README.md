@@ -1,18 +1,26 @@
 DemoProject-react-native
 
+Build and run the app
+Install React Native as described at https://facebook.github.io/react-native/docs/getting-started.html#content
+
+Clone this repository
+
+Run yarn install , all required components will be installed automatically
+
+iOS
+Run pod install from react-native-demo/ios folder
+Start XCode and open generated VoximplantDemo.xcworkspace
 Android
-You might need to do this to run it in Android Studio or on real device: adb reverse tcp:8081 tcp:8081
-And for the sample server: adb reverse tcp:3000 tcp:3000
-To run from command line try: react-native run-android
-Server
-There is a server that the app hits for data. The data is only stored in memory, but it should produce a more realistic environment.
+no steps required
 
-In the server directory
+Note: To enable android push notifications in the demo project:
 
-Install nvm and node-4.2.3
-Install dependencies: npm install
-Run it: npm start
-It has sample data in the models.js file. For example, there is a user bleonard (password: "sample") that you can log in as.
+Follow the instructions to add the certificates to the Voximplant Cloud
+Add google-services.json file to android/app folder
+Open app/build.gradle file and uncomment the //apply plugin: 'com.google.gms.google-services' line
+It is recommended to run react-native start command from root project directory.
+
+Run your project from XCode (Cmd+R) for iOS, or use react-native run-android to run your project on Android.
 
 Current Concepts
 Navigation
