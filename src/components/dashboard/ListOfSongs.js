@@ -2,8 +2,6 @@ import React, { Fragment } from 'react';
 import {
     View,
     Text,
-    Image,
-    Button,
     StyleSheet,
     ScrollView,
     TouchableOpacity,
@@ -67,7 +65,7 @@ const audioList = [
 var sound1;
 function playSound(item) {
     stopSound();
-    sound1 = new Sound(item.url, (error, sound) => {
+    sound1 = new Sound(item.url, (error) => {
         if (error) {
             alert('error' + error + message);
             return;
@@ -86,35 +84,16 @@ function stopSound() {
     }
 }
 
-const ListOfSongs = ({ navigation }) => {
-    const onLogout = () => {
-        navigation.navigate('Login')
-    }
+const ListOfSongs = () => {
+
 
     return (
         <Fragment>
             <View style={{ flex: 1 }} >
-                <TouchableOpacity onPress={() => {
-                    return onLogout()
-                }
-                }>
-                    <View style={styles.logout}>
-                        <Text style={{
-                            fontSize: 20,
-                            fontWeight: 'bold',
-                            color: 'darkred'
-                        }}>
-                            LOGOUT
-        </Text>
-                    </View>
-                </TouchableOpacity>
-                <Text style={styles.headerTitle}>
-                    Most Overplayed Songs
-</Text>
                 <ScrollView>
-                    {audioList.map((item, index) => {
+                    {audioList.map((item) => {
                         return (<View style={styles.feature} key={item.title}>
-                            <Text style={{ flex: 1, fontSize: 16, fontWeight:'bold' }}>
+                            <Text style={{ flex: 1, fontSize: 16, fontWeight: 'bold' }}>
                                 {item.title} - {item.artist}
                             </Text>
                             <TouchableOpacity onPress={() => {
@@ -147,7 +126,7 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         fontWeight: 'bold',
         color: 'steelblue',
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     buttonPlay: {
         fontSize: 16,
