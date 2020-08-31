@@ -25,23 +25,28 @@ const NavigationDrawerStructure = (props) => {
       <TouchableOpacity onPress={() => toggleDrawer()}>
         {/*Donute Button Image */}
         <Image
-          source={{ uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png' }}
+          source={{
+            uri:
+              'https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png',
+          }}
           style={{ width: 25, height: 25, marginLeft: 5 }}
         />
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 const LoginApp = () => {
   return (
-    <Stack.Navigator screenOptions={{
-      headerShown: false
-    }}>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
       <Stack.Screen name="Login" component={Loginpage} />
+      <Stack.Screen name="DashBoard" component={DrawerApp} />
     </Stack.Navigator>
-  )
-}
+  );
+};
 
 function firstScreenStack({ navigation }) {
   return (
@@ -50,7 +55,9 @@ function firstScreenStack({ navigation }) {
         name="Most Overplayed Songs"
         component={DashBoard}
         options={{
-          headerLeft: () => <NavigationDrawerStructure navigationProps={navigation} />,
+          headerLeft: () => (
+            <NavigationDrawerStructure navigationProps={navigation} />
+          ),
           headerStyle: {
             backgroundColor: '#00BCD4', //Set Header color
           },
@@ -69,22 +76,24 @@ function secondScreenStack({ navigation }) {
     <Stack.Navigator
       initialRouteName="AboutUs"
       screenOptions={{
-        headerLeft: () => <NavigationDrawerStructure navigationProps={navigation} />,
+        headerLeft: () => (
+          <NavigationDrawerStructure navigationProps={navigation} />
+        ),
         headerStyle: {
           backgroundColor: '#00BCD4', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
           fontWeight: 'bold', //Set Header text style
-        }
+        },
       }}>
       <Stack.Screen
         name="About us"
         component={AboutUs}
         options={{
           title: 'About us', //Set Header Title
-
-        }} />
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -94,31 +103,32 @@ function thirdScreenStack({ navigation }) {
     <Stack.Navigator
       initialRouteName="ContactUs"
       screenOptions={{
-        headerLeft: () => <NavigationDrawerStructure navigationProps={navigation} />,
+        headerLeft: () => (
+          <NavigationDrawerStructure navigationProps={navigation} />
+        ),
         headerStyle: {
           backgroundColor: '#00BCD4', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
           fontWeight: 'bold', //Set Header text style
-        }
+        },
       }}>
       <Stack.Screen
         name="Contact us"
         component={ContactUs}
         options={{
           title: 'Contact us', //Set Header Title
-
-        }} />
+        }}
+      />
     </Stack.Navigator>
   );
 }
 
-const Logout =()=>{
-  return(
-alert("fjhytrjuyt")
-  )
-}
+const Logout = ({ navigation }) => {
+  navigation.navigate('Login');
+  return null;
+};
 
 const DrawerApp = () => {
   return (
@@ -129,28 +139,32 @@ const DrawerApp = () => {
       }}>
       <Drawer.Screen
         name="Most Overplayed Songs"
-        component={firstScreenStack} />
+        component={firstScreenStack}
+      />
       <Drawer.Screen
         name="About Us"
         options={{ drawerLabel: 'About Us' }}
-        component={secondScreenStack} />
-         <Drawer.Screen
+        component={secondScreenStack}
+      />
+      <Drawer.Screen
         name="Contact Us"
         options={{ drawerLabel: 'Contact Us' }}
-        component={thirdScreenStack} />
-            <Drawer.Screen
+        component={thirdScreenStack}
+      />
+      <Drawer.Screen
         name="Logout"
         options={{ drawerLabel: 'Logout' }}
-        component={Logout} />
+        component={Logout}
+      />
     </Drawer.Navigator>
-  )
-}
+  );
+};
 const App = () => {
   return (
     <NavigationContainer>
-      <DrawerApp />
+      <LoginApp />
     </NavigationContainer>
   );
-}
+};
 
 export default App;
