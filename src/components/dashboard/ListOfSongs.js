@@ -85,8 +85,6 @@ function stopSound() {
 }
 
 const ListOfSongs = () => {
-
-
     return (
         <Fragment>
             <View style={{ flex: 1 }} >

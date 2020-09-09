@@ -9,6 +9,7 @@ import Loginpage from './src/components/authentication/LoginPage';
 import DashBoard from './src/components/dashboard/DashBoard';
 import AboutUs from './src/drawer/AboutUs';
 import ContactUs from './src/drawer/ContactUs';
+import UserProfile from './src/drawer/UserProfile';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -23,7 +24,6 @@ const NavigationDrawerStructure = (props) => {
   return (
     <View style={{ flexDirection: 'row' }}>
       <TouchableOpacity onPress={() => toggleDrawer()}>
-        {/*Donute Button Image */}
         <Image
           source={{
             uri:
@@ -125,6 +125,33 @@ function thirdScreenStack({ navigation }) {
   );
 }
 
+function fourthScreenStack({ navigation }) {
+  return (
+    <Stack.Navigator
+      initialRouteName="UserProfile"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerStructure navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#00BCD4', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="UserProfile"
+        component={UserProfile}
+        options={{
+          title: 'User Profile', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 const Logout = ({ navigation }) => {
   navigation.navigate('Login');
   return null;
@@ -150,6 +177,11 @@ const DrawerApp = () => {
         name="Contact Us"
         options={{ drawerLabel: 'Contact Us' }}
         component={thirdScreenStack}
+      />
+        <Drawer.Screen
+        name="User Profile"
+        options={{ drawerLabel: 'User Profile' }}
+        component={fourthScreenStack}
       />
       <Drawer.Screen
         name="Logout"

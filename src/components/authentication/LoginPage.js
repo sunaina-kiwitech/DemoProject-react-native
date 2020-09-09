@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { Login } from '../../actions';
 
 export default function Loginpage({ navigation }) {
     const [userName, checkUserName] = useState('');
     const [password, checkPassword] = useState('');
+    const dispatch = useDispatch();
 
     const onChangeUserName = (text) => {
         checkUserName(text)
@@ -15,6 +18,7 @@ export default function Loginpage({ navigation }) {
 
     const onsubmit = (userName, password) => {
         if (userName === 'sunaina.passi@kiwitech.com' && password === 'Kiwi@123') {
+            dispatch(Login(userName))
             navigation.navigate('DashBoard')
         }
         else {
