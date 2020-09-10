@@ -14,7 +14,7 @@ const ContactUs = () => {
                     backgroundColor:'white'
                 }}>
                 <Text style={styles.text}>
-                    E-mail: sunaina.passi@kiwitech.com
+                    E-mail: abc@musicapp.com
                 </Text>
                 <Text style={styles.text}>
                     Phone Number : +91-9876543212

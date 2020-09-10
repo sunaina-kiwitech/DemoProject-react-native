@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Button, AsyncStorage } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { Login } from '../../actions';
 
@@ -9,6 +9,7 @@ export default function Loginpage({ navigation }) {
     const dispatch = useDispatch();
 
     const onChangeUserName = (text) => {
+        AsyncStorage.setItem('email', text);
         checkUserName(text)
     }
 
@@ -20,6 +21,7 @@ export default function Loginpage({ navigation }) {
         if (userName === 'sunaina.passi@kiwitech.com' && password === 'Kiwi@123') {
             dispatch(Login(userName))
             navigation.navigate('DashBoard')
+            console.log(" AsyncStorage.getItem('name')",  AsyncStorage.getItem('email'));
         }
         else {
             alert('Invalid credentials')
