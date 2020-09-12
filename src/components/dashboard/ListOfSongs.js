@@ -85,6 +85,26 @@ function stopSound() {
 }
 
 const ListOfSongs = () => {
+    const playList = async () => {
+        try {
+            const response = await fetch(
+                'https://shazam.p.rapidapi.com/songs/list-artist-top-tracks',
+                {
+                    headers: {
+                        "x-rapidapi-host": "shazam.p.rapidapi.com",
+                        "x-rapidapi-key": "f30bcb821bmsh823010d7adc5c9cp150d0djsn0c1cfd44d48a",
+                        "useQueryString": true
+                    },
+                }
+            );
+            console.log(response);
+
+            const responseJson = await response.json();
+            return responseJson;
+        } catch (error) {
+            console.error(error);
+        }
+    }
     return (
         <Fragment>
             <View style={{ flex: 1 }} >
@@ -95,7 +115,7 @@ const ListOfSongs = () => {
                                 {item.title} - {item.artist}
                             </Text>
                             <TouchableOpacity onPress={() => {
-                                return playSound(item)
+                                return playList()
                             }}>
                                 <Text style={styles.buttonPlay}>
                                     Play

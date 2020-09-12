@@ -10,6 +10,7 @@ import DashBoard from './src/components/dashboard/DashBoard';
 import AboutUs from './src/drawer/AboutUs';
 import ContactUs from './src/drawer/ContactUs';
 import UserProfile from './src/drawer/UserProfile';
+import SignUp from './src/components/signUp/SignUp';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -44,6 +45,7 @@ const LoginApp = () => {
       }}>
       <Stack.Screen name="Login" component={Loginpage} />
       <Stack.Screen name="DashBoard" component={DrawerApp} />
+      <Stack.Screen name="SignUp" component={SignUp} />
     </Stack.Navigator>
   );
 };

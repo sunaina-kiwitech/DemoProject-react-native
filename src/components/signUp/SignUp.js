@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, Image, Button, AsyncStorage } from '
 import { useDispatch } from 'react-redux';
 import { Login } from '../../actions';
 
-export default function Loginpage({ navigation }) {
+export default function SignUp({ navigation }) {
     const [userName, checkUserName] = useState('');
     const [password, checkPassword] = useState('');
     const dispatch = useDispatch();
@@ -29,21 +29,57 @@ export default function Loginpage({ navigation }) {
     }
     return (
         <View style={styles.container}>
-            <Image source={require('./../../../assests/images/music.png')}
-                style={{ width: 360, height: 200 }}
-            />
             <Text style={{
                 color: 'steelblue',
-                fontSize: 17,
+                fontSize: 29,
                 fontWeight: 'bold',
             }}>
-                Login before you enjoy the world's music catlog
+                Sign Up
             </Text>
             <View style={styles.box}>
                 <Text style={{
                     fontWeight: 'bold',
                 }}>
-                    Email ID/Mobile Number
+                    Enter your name
+                </Text>
+                <TextInput
+                    isDarkMode
+                    autoCapitalize="words"
+                    value={userName}
+                    onChangeText={text => onChangeUserName(text)}
+                />
+            </View>
+            <View style={styles.box}>
+                <Text style={{
+                    fontWeight: 'bold',
+                }}>
+                    Enter your email address
+                </Text>
+                <TextInput
+                    isDarkMode
+                    autoCapitalize="words"
+                    value={userName}
+                    onChangeText={text => onChangeUserName(text)}
+                />
+            </View>
+            <View style={styles.box}>
+                <Text style={{
+                    fontWeight: 'bold',
+                }}>
+                    Enter your mobile number
+                </Text>
+                <TextInput
+                    isDarkMode
+                    autoCapitalize="words"
+                    value={userName}
+                    onChangeText={text => onChangeUserName(text)}
+                />
+            </View>
+            <View style={styles.box}>
+                <Text style={{
+                    fontWeight: 'bold',
+                }}>
+                    Enter your date of birth
                 </Text>
                 <TextInput
                     isDarkMode
@@ -66,7 +102,7 @@ export default function Loginpage({ navigation }) {
             </View>
             <View style={styles.button}>
                 <Button
-                    title="Login"
+                    title="Create your account"
                     color='steelblue'
                     onPress={() => onsubmit(userName.toLowerCase(), password)}
                     disabled={userName === '' || password === ''}
@@ -77,9 +113,9 @@ export default function Loginpage({ navigation }) {
                 textDecorationLine: 'underline',
                 color:'steelblue'
             }} onPress={()=>{
-                navigation.navigate('SignUp')
+                navigation.navigate('Login')
             }}>
-                Didn't have an account?  Create new one
+               Already have an account?  Login
             </Text>
         </View>
     );
