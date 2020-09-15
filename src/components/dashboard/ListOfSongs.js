@@ -87,16 +87,14 @@ function stopSound() {
 const ListOfSongs = () => {
     const playList = async () => {
         try {
-            const response = await fetch(
-                'https://shazam.p.rapidapi.com/songs/list-artist-top-tracks',
-                {
-                    headers: {
-                        "x-rapidapi-host": "shazam.p.rapidapi.com",
-                        "x-rapidapi-key": "f30bcb821bmsh823010d7adc5c9cp150d0djsn0c1cfd44d48a",
-                        "useQueryString": true
-                    },
-                }
-            );
+            const response = await fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem', {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                  "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+                    "x-rapidapi-key": "f30bcb821bmsh823010d7adc5c9cp150d0djsn0c1cfd44d48a"
+                },
+              }) 
             console.log(response);
 
             const responseJson = await response.json();
